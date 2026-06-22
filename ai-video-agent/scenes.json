@@ -1,0 +1,35 @@
+{
+  "title": "GEO Foundations: Search is Changing",
+  "scenes": [
+    {
+      "scene": 1,
+      "duration": 8,
+      "prompt": "Cinematic wide shot of a person looking frustrated at a traditional desktop screen displaying a cluttered search results page filled with blue links. Seamless transition to a close-up of another person, with a focused, engaged expression, interacting effortlessly and conversationally with an elegant, glowing AI interface on a tablet. The tablet displays a direct, insightful answer, with a modern, dynamic atmosphere emphasizing a paradigm shift from old to new search.",
+      "narration": "Welcome to Blazly Academy's GEO Foundations, Module 1: Search is Changing. For over two decades, finding information online meant typing keywords, getting blue links, and clicking through. But that model is being profoundly disrupted. The internet is undergoing its most significant transformation, powered by Artificial Intelligence. Users are no longer just searching; they're asking, and receiving direct, conversational answers."
+    },
+    {
+      "scene": 2,
+      "duration": 8,
+      "prompt": "A sophisticated visual timeline evolving: begin with a sepia-toned shot of a hand flipping through a thick, vintage physical directory or encyclopedia. Transition fluidly to an early, pixelated web browser interface showing a Yahoo!-like manually curated web directory. Then, a vibrant, modern shot of a Google search page with the classic 'ten blue links' results. Finally, a contemporary smartphone screen depicting advanced mobile and voice search interactions, culminating in a sophisticated generative AI conversational interface providing a rich, synthesized answer.",
+      "narration": "To truly grasp where we're headed, we must understand where we've been. From static print directories and early web portals, we moved to the era of automated search engines like Google, which organized billions of pages. Mobile and voice search then introduced shorter, conversational queries demanding immediate answers. This continuous evolution set the critical stage for today's transformative generative AI."
+    },
+    {
+      "scene": 3,
+      "duration": 8,
+      "prompt": "A visually striking split-screen comparison. On the left: a stark, functional traditional search engine results page with a long list of blue links, a cursor hovering, emphasizing the user's need for manual effort. On the right: a sleek, minimalist AI chat interface displaying a comprehensive, well-structured direct answer to a complex question, with subtle source citations, conveying ease, intelligence, and completeness. A clear, glowing vertical divider visually separates and highlights the profound contrast between the two paradigms.",
+      "narration": "This is the conceptual cornerstone of GEO Foundations: the critical difference between a traditional search engine and an AI answer engine. A search engine gives you links; it makes you work to find the answer. An answer engine, powered by AI, synthesizes information from across the web and its training data, providing a direct, conversational answer. The user gets the information instantly, often without needing to click through any websites."
+    },
+    {
+      "scene": 4,
+      "duration": 8,
+      "prompt": "A dynamic montage or multi-panel split screen showcasing the diverse modern AI interfaces: a clean ChatGPT chat window displaying natural language dialogue, Google Gemini's multimodal results integrated with search, Microsoft Copilot's seamless integration into an office suite, Perplexity AI prominently highlighting its cited, source-transparent answers, and Anthropic's Claude with its focus on reasoning. Interspersed are quick, energetic cuts of diverse users engaging with these platforms conversationally via both text input and voice commands, clearly demonstrating the shift to natural language interaction.",
+      "narration": "Today's generative search landscape is vibrant, featuring powerful platforms like OpenAI's ChatGPT, Google Gemini, Microsoft Copilot, Perplexity AI, and Anthropic's Claude. These platforms aren't just changing technology; they're fundamentally shifting user behavior. People are moving from entering short keywords to having full conversations, from multi-click research to single-answer consumption, and from passive reading to interactive dialogue."
+    },
+    {
+      "scene": 5,
+      "duration": 8,
+      "prompt": "A dramatic, high-stakes visual representation of business impact. A digital representation of a generic business logo slowly fading into complete invisibility against a dark, empty digital void on one side, juxtaposed with a brightly shining, recognizable business logo prominently integrated and cited within an AI-generated answer, surrounded by glowing lines of increased customer engagement and digital growth. The scene uses subtle motion graphics to convey the stark contrast between existential risk and strategic opportunity, highlighting the profound importance of adaptation.",
+      "narration": "For businesses, the implications of this shift are staggering. If your brand isn't cited or recommended in an AI's synthesized answer, you effectively become invisible to that potential customer. This 'zero-click threat' demands a new approach. Generative Engine Optimization, or GEO, isn't just a new buzzword; it's the critical discipline for ensuring your brand's visibility and survival in the AI-powered internet. Early adaptation isn't just an advantage; it's an imperative for future business success."
+    }
+  ]
+}
