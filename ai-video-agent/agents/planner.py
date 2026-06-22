@@ -1,6 +1,10 @@
 import json
 import os
+from dotenv import load_dotenv
 from google import genai
+
+# Load .env file
+load_dotenv()
 
 # Gemini Client
 client = genai.Client(
