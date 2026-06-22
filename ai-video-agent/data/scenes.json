@@ -4,87 +4,87 @@
     {
       "scene": 1,
       "duration": 12,
-      "slide_title": "Search Is Changing: The Internet's Biggest Shift",
+      "slide_title": "Search is Changing: Why It Matters",
       "bullet_points": [
-        "Internet undergoing its most significant transformation.",
-        "Fundamental shift in how people find information and interact with brands.",
-        "AI-powered tools are reimagining traditional search.",
-        "Window for businesses to adapt is narrowing fast."
+        "Internet's most significant transformation in decades.",
+        "Traditional search model is being disrupted.",
+        "AI-powered tools offer conversational answers.",
+        "Users are now \"asking,\" not \"searching.\""
       ],
       "image_prompts": [
-        "A glowing, abstract representation of the internet transforming, with old 'blue links' fading and new, organic AI structures emerging.",
-        "A business owner looking at a complex digital landscape, a sense of urgency and change reflected in their eyes.",
-        "A futuristic interface showing a user asking a question to an AI assistant, with a direct, synthesized answer appearing seamlessly."
+        "A person looking overwhelmed by a flurry of traditional 'blue link' search results on a desktop screen, reflecting a past era.",
+        "An abstract representation of AI learning and synthesizing information, with data flowing across a neural network, symbolizing transformation.",
+        "A user speaking naturally to an invisible AI assistant, receiving a clear, direct answer on a modern smart device, showing the new paradigm."
       ],
-      "narration": "The internet is experiencing its most profound transformation since the birth of the World Wide Web. For over two decades, finding information meant typing keywords and clicking blue links. This model, which shaped entire industries like SEO, is now being fundamentally reimagined by AI. The speed of this disruption means businesses have a rapidly narrowing window to adapt, or risk becoming invisible."
+      "narration": "The internet is undergoing its most significant transformation since the birth of the World Wide Web. For over two decades, finding information meant typing keywords and clicking links. But this model is now being fundamentally disrupted. AI-powered tools are emerging, providing direct, conversational answers. This means users are no longer just 'searching'; they are 'asking,' and the implications for your digital presence are profound and immediate."
     },
     {
       "scene": 2,
       "duration": 12,
-      "slide_title": "The Evolution of Search: From Static to Dynamic",
+      "slide_title": "The Evolution of Search: From Directories to Engines",
       "bullet_points": [
-        "Early search: Physical and web directories (Yellow Pages, Yahoo!).",
-        "Directories were human-curated and unscalable.",
-        "Automated search engines emerged, led by Google.",
-        "PageRank algorithm revolutionized relevance and authority."
+        "Early search: Physical directories and web portals.",
+        "Automated web crawlers and the rise of search engines.",
+        "Google's PageRank revolutionized indexing.",
+        "SEO emerged, focused on ranking 'blue links.'"
       ],
       "image_prompts": [
-        "A vintage 'Yellow Pages' phone book open next to an old computer screen displaying the early Yahoo! directory interface, illustrating the beginning of digital organization.",
-        "An abstract visualization of web crawlers indexing billions of pages, symbolizing the massive scale and automation of early search engines.",
-        "A simplified, iconic representation of Google's PageRank algorithm, with interconnected nodes indicating authority and links, showcasing its revolutionary approach."
+        "A vintage 'Yellow Pages' phone book open, next to a 90s computer screen displaying an early Yahoo! web directory, showing foundational search.",
+        "An abstract visualization of a web crawler robot industriously indexing a vast, interconnected web of digital pages, representing automation.",
+        "A classic Google search results page from the early 2000s, featuring 10 prominent 'blue links,' highlighting the traditional search era."
       ],
-      "narration": "Our journey begins with the earliest forms of information retrieval: physical directories like the Yellow Pages, and early web portals like Yahoo!. These systems relied on human curation, becoming unscalable as the internet exploded. The true search engine era began with automated crawlers, culminating in Google's PageRank algorithm. This innovation, which prioritized link-based credibility, delivered vastly superior results, forever changing how billions interacted with the internet."
+      "narration": "Our journey begins with the physical directories and early web portals like Yahoo!, where information was manually curated. Then came the true search engine era with automated web crawlers. Google, launched in 1998, revolutionized this with its PageRank algorithm, ranking pages by credibility. This era defined online visibility for 25 years, giving rise to Search Engine Optimization, or SEO, a discipline built entirely around ranking in those familiar 'blue links'."
     },
     {
       "scene": 3,
       "duration": 12,
-      "slide_title": "Behavioral Shifts: Mobile, Voice & Direct Answers",
+      "slide_title": "Search's Evolution: Mobile, Voice & Generative AI",
       "bullet_points": [
-        "Mobile phones shifted search to 'on-the-go' and 'near me' queries.",
-        "Voice assistants introduced conversational queries.",
-        "Users demanded immediate, singular answers.",
-        "Featured Snippets became early precursors to AI answers."
+        "Mobile devices shifted search behavior and context.",
+        "Voice search demanded singular, direct answers.",
+        "Featured Snippets: A precursor to AI answers.",
+        "Generative Search: LLMs create new, synthesized responses."
       ],
       "image_prompts": [
-        "A hand holding a modern smartphone, showing a 'near me' search result on a dynamic map, with urban activity blurred in the background.",
-        "A person interacting naturally with a smart speaker in a modern home environment, speaking a full question rather than typing.",
-        "A Google Search Results Page highlighting a prominent 'Featured Snippet' box at the very top, emphasizing a single, direct answer above traditional links."
+        "A person actively using a smartphone in a dynamic urban environment, quickly typing a 'near me' search query, illustrating mobile search in action.",
+        "A person interacting conversationally with a smart speaker at home, asking a complex question in natural language, depicting voice search.",
+        "A futuristic interface displaying an AI-generated, conversational answer, with subtle citations, on a large screen, symbolizing generative AI."
       ],
-      "narration": "The advent of mobile smartphones profoundly changed search behavior, making queries shorter, location-aware, and more immediate. Soon after, voice assistants like Siri and Alexa introduced natural, conversational queries, shifting the demand from lists of links to singular, direct answers. Google's Knowledge Graph and Featured Snippets were early indicators of this demand, providing direct information right on the search results page."
+      "narration": "The launch of smartphones began a profound shift, making searches shorter, location-aware, and immediate. Voice assistants like Siri and Alexa took this further, requiring singular, conversational answers, not lists of links. This led to 'Featured Snippets' – an important stepping stone. Now, with Generative Search, Large Language Models don't just retrieve; they synthesize information and generate entirely new, customized answers in response to your queries."
     },
     {
       "scene": 4,
       "duration": 12,
-      "slide_title": "Generative AI: The Rise of Answer Engines",
+      "slide_title": "Search Engines vs. Answer Engines: The New Paradigm",
       "bullet_points": [
-        "Generative AI is a qualitative leap, not incremental.",
-        "AI systems synthesize information and generate custom answers.",
-        "Key platforms: ChatGPT, Gemini, Copilot, Perplexity AI, Claude.",
-        "The core difference: links vs. synthesized answers."
+        "Search Engines provide ranked links for user clicking.",
+        "Answer Engines synthesize direct responses from data.",
+        "Key AI Platforms: ChatGPT, Gemini, Copilot, Perplexity, Claude.",
+        "Fundamental difference: Links vs. generated text as output."
       ],
       "image_prompts": [
-        "An abstract visual representing a Large Language Model (LLM) at work, processing vast amounts of data and generating coherent, new text output.",
-        "A montage of different AI platform logos (ChatGPT, Google Gemini, Microsoft Copilot, Perplexity AI, Anthropic Claude) appearing as if from a central, intelligent hub.",
-        "A split screen showing a traditional Google SERP with blue links on one side, and a clean AI chatbot interface delivering a direct, concise answer on the other, highlighting the conceptual difference."
+        "A clear split screen: one side showing a traditional Google SERP with multiple blue links, the other showing a clean ChatGPT-like conversational interface delivering a direct answer.",
+        "Icons and logos of various prominent AI platforms (ChatGPT, Google Gemini, Microsoft Copilot, Perplexity AI, Anthropic's Claude) displayed as interconnected nodes in a digital network.",
+        "A user thoughtfully reading a concise, direct answer generated by an AI on a minimalist interface, indicating no further clicks are needed."
       ],
-      "narration": "Today's frontier is Generative Search, a qualitative leap powered by Large Language Models. Platforms like ChatGPT, Google Gemini, and Perplexity AI don't just retrieve links; they synthesize vast information and generate direct, conversational answers. This fundamental shift from 'search engines' returning links to 'answer engines' providing direct solutions means the user no longer needs to click through to your website."
+      "narration": "This is a conceptual cornerstone: the difference between a search engine and an answer engine. Search engines provide a list of links, requiring you to click through to find answers. Answer engines, powered by platforms like ChatGPT, Gemini, Copilot, Perplexity, and Claude, synthesize information and deliver a direct, written answer. This fundamental shift from 'links' to 'generated text' has massive implications for brand visibility and digital strategy."
     },
     {
       "scene": 5,
       "duration": 12,
-      "slide_title": "Why Generative Engine Optimization (GEO) Matters",
+      "slide_title": "User Behavior, Business Impact & Generative Engine Optimization (GEO)",
       "bullet_points": [
-        "Users are asking, not just searching.",
-        "Single-answer consumption replaces multi-click research.",
-        "'Visibility without citation equals invisibility' for businesses.",
-        "GEO is the critical new discipline for AI search presence."
+        "Users shift from keywords to natural conversations.",
+        "From multi-click research to single-answer consumption.",
+        "Visibility without citation equals invisibility for businesses.",
+        "Generative Engine Optimization (GEO) is the successor to SEO."
       ],
       "image_prompts": [
-        "A user interacting conversationally with an AI assistant on a tablet, visually representing the shift from typing keywords to speaking full questions.",
-        "A business dashboard showing a drastic drop in website traffic graphs, symbolizing the 'zero-click threat' and the need for new strategies.",
-        "A clear, professional graphic illustrating the concept of GEO (Generative Engine Optimization) as a compass guiding a brand through a complex AI landscape, emphasizing recognition by AI systems."
+        "A user engaging in a natural, multi-turn conversation with an AI assistant on a tablet, asking follow-up questions in a dynamic setting.",
+        "An empty, simplistic search bar contrasted with a complex, rich AI-generated answer prominently displayed, highlighting the 'zero-click' phenomenon.",
+        "A stylized visual representing 'Generative Engine Optimization (GEO)' as a sophisticated compass or guide for brands navigating the AI landscape, pointing towards future success."
       ],
-      "narration": "The shift to AI search is not just technological; it's behavioral. Users are now asking full questions and expecting direct, personalized answers, often in a single interaction. For businesses, this has profound implications: if your brand isn't cited or recommended by AI, you effectively become invisible. This is why Generative Engine Optimization, or GEO, is emerging as the successor to SEO, becoming the most critical discipline for maintaining visibility and driving relevance in the AI-powered internet."
+      "narration": "User behavior is rapidly adapting: from short keywords to natural language conversations, and from multi-click research to single-answer consumption. For businesses, this means a critical risk: if your brand isn't cited or referenced in AI-generated answers, you become effectively invisible. This is why Generative Engine Optimization, or GEO, is emerging as the most critical new discipline in digital marketing, ensuring your brand's presence in the AI-powered internet."
     }
   ]
 }

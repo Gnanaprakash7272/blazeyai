@@ -29,6 +29,8 @@ build/
 
 # Output / generated files
 outputs/
+jobs/
+progress/
 *.mp4
 *.avi
 *.mov
