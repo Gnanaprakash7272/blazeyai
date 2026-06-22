@@ -2,144 +2,205 @@ import json
 import os
 from PIL import Image, ImageDraw, ImageFont
 
-# Load scenes
 with open("data/scenes.json", "r", encoding="utf-8") as f:
     data = json.load(f)
 
 os.makedirs("outputs/slides", exist_ok=True)
 
-WIDTH  = 1280
-HEIGHT = 720
+# ── Canvas ──────────────────────────────────────────────────
+W, H         = 1280, 720
 
-# Colors
-BG_COLOR       = (10, 15, 30)       # Deep navy
-ACCENT         = (0, 210, 150)      # Blazly green
-ACCENT_DARK    = (0, 140, 100)
-TITLE_COLOR    = (255, 255, 255)
-BULLET_COLOR   = (220, 230, 245)
-BRAND_COLOR    = (0, 210, 150)
-FOOTER_COLOR   = (120, 130, 150)
-CARD_COLOR     = (20, 30, 55)
-BULLET_DOT     = (0, 210, 150)
+# ── Layout zones ────────────────────────────────────────────
+HEADER_H     = 62          # top header bar
+FOOTER_H     = 90          # bottom subtitle bar
+DIVIDER      = 2
+CONTENT_TOP  = HEADER_H + DIVIDER
+CONTENT_BOT  = H - FOOTER_H - DIVIDER
 
-def get_font(size):
-    for font_name in ["arialbd.ttf", "arial.ttf", "DejaVuSans-Bold.ttf", "DejaVuSans.ttf"]:
+# Avatar reserved zone (bottom-right of content area)
+AV_X1, AV_Y1 = 840, CONTENT_TOP + 160
+AV_X2, AV_Y2 = 1240, CONTENT_BOT - 10
+AV_W  = AV_X2 - AV_X1      # 400
+AV_H  = AV_Y2 - AV_Y1      # varies
+
+# ── Colours ─────────────────────────────────────────────────
+BG          = (10, 14, 28)
+HEADER_BG   = (14, 20, 42)
+FOOTER_BG   = (8, 12, 22)
+ACCENT      = (0, 210, 150)
+ACCENT2     = (0, 160, 110)
+CARD_BG     = (18, 26, 52)
+DIV_COL     = (30, 42, 78)
+WHITE       = (255, 255, 255)
+LIGHT       = (210, 220, 240)
+MUTED       = (110, 125, 155)
+CHECK_COL   = (0, 210, 150)
+AV_BORDER   = (0, 180, 130)
+AV_BG       = (14, 22, 44)
+
+TOTAL_SCENES = len(data["scenes"])
+
+# ── Font helper ─────────────────────────────────────────────
+def font(size, bold=False):
+    candidates = (
+        ["arialbd.ttf", "arial.ttf", "DejaVuSans-Bold.ttf", "DejaVuSans.ttf"]
+        if bold else
+        ["arial.ttf", "DejaVuSans.ttf", "arialbd.ttf"]
+    )
+    for name in candidates:
         try:
-            return ImageFont.truetype(font_name, size)
+            return ImageFont.truetype(name, size)
         except:
-            continue
+            pass
     return ImageFont.load_default()
 
-def draw_rounded_rect(draw, xy, radius, fill):
-    x1, y1, x2, y2 = xy
-    draw.rectangle([x1 + radius, y1, x2 - radius, y2], fill=fill)
-    draw.rectangle([x1, y1 + radius, x2, y2 - radius], fill=fill)
-    draw.ellipse([x1, y1, x1 + 2*radius, y1 + 2*radius], fill=fill)
-    draw.ellipse([x2 - 2*radius, y1, x2, y1 + 2*radius], fill=fill)
-    draw.ellipse([x1, y2 - 2*radius, x1 + 2*radius, y2], fill=fill)
-    draw.ellipse([x2 - 2*radius, y2 - 2*radius, x2, y2], fill=fill)
+def wrap_text(draw, text, font_obj, max_w):
+    words = text.split()
+    lines, cur = [], ""
+    for w in words:
+        test = (cur + " " + w).strip()
+        if draw.textbbox((0,0), test, font=font_obj)[2] <= max_w:
+            cur = test
+        else:
+            if cur: lines.append(cur)
+            cur = w
+    if cur: lines.append(cur)
+    return lines
 
+# ── Draw each scene slide ────────────────────────────────────
 for scene in data["scenes"]:
-
     scene_no = scene["scene"]
     title    = scene["slide_title"]
     bullets  = scene["bullet_points"]
 
-    img  = Image.new("RGB", (WIDTH, HEIGHT), BG_COLOR)
+    img  = Image.new("RGB", (W, H), BG)
     draw = ImageDraw.Draw(img)
 
-    # --- Subtle gradient overlay (dark top to slightly lighter bottom) ---
-    for y in range(HEIGHT):
-        alpha = int(y / HEIGHT * 18)
-        draw.line([(0, y), (WIDTH, y)], fill=(10 + alpha, 15 + alpha, 30 + alpha))
+    # ── Subtle bg gradient ───────────────────────────────────
+    for y in range(H):
+        v = int(y / H * 12)
+        draw.line([(0,y),(W,y)], fill=(BG[0]+v, BG[1]+v, BG[2]+v))
 
-    # --- Left accent bar ---
-    draw.rectangle([(0, 0), (6, HEIGHT)], fill=ACCENT)
+    # ── Left accent glow strip ───────────────────────────────
+    for i in range(5):
+        draw.rectangle([(i, 0),(i+1, H)],
+                        fill=(0, max(0,210-i*40), max(0,150-i*28)))
 
-    # --- Top accent glow strip ---
-    for i in range(12):
-        opacity = int(180 - i * 14)
-        draw.rectangle([(6, i), (WIDTH, i + 1)],
-                        fill=(0, 210, 150, opacity) if False else ACCENT if i == 0
-                        else (0, max(0, 210 - i*16), max(0, 150 - i*11)))
+    # ════════════════════════════════════════════════════════
+    # HEADER
+    # ════════════════════════════════════════════════════════
+    draw.rectangle([(0,0),(W, HEADER_H)], fill=HEADER_BG)
 
-    # --- Brand name top-left ---
-    brand_font = get_font(18)
-    draw.text((30, 22), "Blazly Academy", fill=BRAND_COLOR, font=brand_font)
+    # Left accent bar in header
+    draw.rectangle([(0,0),(5, HEADER_H)], fill=ACCENT)
 
-    # --- Scene number top-right ---
-    scene_font = get_font(18)
-    scene_label = f"Scene {scene_no} / {len(data['scenes'])}"
-    bbox = draw.textbbox((0, 0), scene_label, font=scene_font)
-    draw.text((WIDTH - bbox[2] - 40, 22), scene_label, fill=FOOTER_COLOR, font=scene_font)
+    # Brand
+    bf = font(20, bold=True)
+    draw.text((24, 20), "Blazly Academy", fill=ACCENT, font=bf)
 
-    # --- Separator line under header ---
-    draw.rectangle([(30, 52), (WIDTH - 30, 54)], fill=(30, 45, 75))
+    # Scene counter (right side)
+    sf  = font(17)
+    lbl = f"Scene  {scene_no}  /  {TOTAL_SCENES}"
+    lw  = draw.textbbox((0,0), lbl, font=sf)[2]
+    draw.text((W - lw - 28, 22), lbl, fill=MUTED, font=sf)
 
-    # --- Title ---
-    title_font = get_font(40)
-    # Wrap title if too long
-    max_title_w = WIDTH - 80
-    while True:
-        bbox = draw.textbbox((0, 0), title, font=title_font)
-        if bbox[2] <= max_title_w or title_font.size <= 28:
+    # Header divider
+    draw.rectangle([(0, HEADER_H),(W, HEADER_H+DIVIDER)], fill=ACCENT2)
+
+    # ════════════════════════════════════════════════════════
+    # CONTENT AREA
+    # ════════════════════════════════════════════════════════
+    # Left content zone (leave right side for avatar)
+    LEFT_MAX_X = AV_X1 - 30   # ~810
+
+    # Title
+    tf = font(36, bold=True)
+    # shrink if too wide
+    while draw.textbbox((0,0), title, font=tf)[2] > LEFT_MAX_X - 36 and tf.size > 22:
+        tf = font(tf.size - 2, bold=True)
+
+    ty = CONTENT_TOP + 30
+    draw.text((30, ty), title, fill=WHITE, font=tf)
+
+    # Accent underline
+    tw = draw.textbbox((30, ty), title, font=tf)[2]
+    draw.rectangle([(30, ty + tf.size + 6),
+                    (min(tw, 30 + 260), ty + tf.size + 10)], fill=ACCENT)
+
+    # ── Bullets ──────────────────────────────────────────────
+    bf2 = font(24)
+    by  = ty + tf.size + 36
+    MAX_BULLET_W = LEFT_MAX_X - 80
+
+    for bullet in bullets:
+        if by > CONTENT_BOT - 30:
             break
-        title_font = get_font(title_font.size - 2)
 
-    draw.text((36, 80), title, fill=TITLE_COLOR, font=title_font)
+        lines = wrap_text(draw, bullet, bf2, MAX_BULLET_W)
 
-    # Accent underline under title
-    title_bbox = draw.textbbox((36, 80), title, font=title_font)
-    draw.rectangle([(36, title_bbox[3] + 8), (36 + min(300, title_bbox[2] - 36), title_bbox[3] + 12)],
-                   fill=ACCENT)
+        # Checkmark circle
+        cx, cy = 40, by + 10
+        draw.ellipse([(cx-12, cy-12),(cx+12, cy+12)], fill=ACCENT)
+        draw.text((cx-7, cy-10), "✓", fill=(10,14,28), font=font(16, bold=True))
 
-    # --- Content card background ---
-    card_top = title_bbox[3] + 30
-    card_bottom = HEIGHT - 60
-    draw_rounded_rect(draw, (30, card_top, WIDTH - 30, card_bottom), 12, CARD_COLOR)
+        for li, line in enumerate(lines[:2]):
+            draw.text((64, by + li*30), line, fill=LIGHT, font=bf2)
 
-    # --- Bullet points ---
-    bullet_font  = get_font(26)
-    small_font   = get_font(20)
-    y = card_top + 28
-    max_bullet_w = WIDTH - 160
+        by += len(lines[:2]) * 30 + 22
 
-    for i, bullet in enumerate(bullets):
-        if y + 36 > card_bottom - 10:
-            break
+    # ════════════════════════════════════════════════════════
+    # AVATAR ZONE (bottom-right placeholder)
+    # ════════════════════════════════════════════════════════
+    # Card background
+    draw.rounded_rectangle(
+        [(AV_X1-4, AV_Y1-4),(AV_X2+4, AV_Y2+4)],
+        radius=14, fill=CARD_BG
+    )
+    # Border
+    draw.rounded_rectangle(
+        [(AV_X1-4, AV_Y1-4),(AV_X2+4, AV_Y2+4)],
+        radius=14, outline=AV_BORDER, width=2
+    )
+    # Inner fill (will be covered by avatar in video_agent)
+    draw.rectangle([(AV_X1, AV_Y1),(AV_X2, AV_Y2)], fill=AV_BG)
 
-        # Dot
-        dot_y = y + 10
-        draw.ellipse([(50, dot_y), (62, dot_y + 12)], fill=BULLET_DOT)
+    # "AI Tutor" label above avatar zone
+    lt = font(15)
+    ll = "AI Tutor"
+    lw = draw.textbbox((0,0), ll, font=lt)[2]
+    lx = AV_X1 + (AV_W - lw) // 2
+    draw.text((lx, AV_Y1 - 28), ll, fill=ACCENT, font=lt)
+    # small dot line
+    draw.rectangle([(AV_X1, AV_Y1-14),(AV_X2, AV_Y1-12)], fill=DIV_COL)
 
-        # Bullet text — wrap if too long
-        words = bullet.split()
-        lines = []
-        current = ""
-        for word in words:
-            test = (current + " " + word).strip()
-            bbox = draw.textbbox((0, 0), test, font=bullet_font)
-            if bbox[2] <= max_bullet_w:
-                current = test
-            else:
-                if current:
-                    lines.append(current)
-                current = word
-        if current:
-            lines.append(current)
+    # ════════════════════════════════════════════════════════
+    # CONTENT DIVIDER (above footer)
+    # ════════════════════════════════════════════════════════
+    draw.rectangle([(0, CONTENT_BOT),(W, CONTENT_BOT+DIVIDER)], fill=DIV_COL)
 
-        for line in lines[:2]:  # max 2 lines per bullet
-            draw.text((78, y), line, fill=BULLET_COLOR, font=bullet_font)
-            y += 34
+    # ════════════════════════════════════════════════════════
+    # FOOTER
+    # ════════════════════════════════════════════════════════
+    draw.rectangle([(0, CONTENT_BOT+DIVIDER),(W, H)], fill=FOOTER_BG)
 
-        y += 14  # spacing between bullets
+    # Quote icon
+    qf = font(28, bold=True)
+    draw.text((22, CONTENT_BOT + 14), "\u201c", fill=ACCENT, font=qf)
 
-    # --- Footer ---
-    footer_font = get_font(16)
-    draw.rectangle([(0, HEIGHT - 42), (WIDTH, HEIGHT)], fill=(8, 12, 24))
-    draw.rectangle([(0, HEIGHT - 43), (WIDTH, HEIGHT - 42)], fill=ACCENT_DARK)
-    draw.text((36, HEIGHT - 28), "Powered by Blazly AI  •  Educational Video Generator",
-              fill=FOOTER_COLOR, font=footer_font)
+    # Narration text (will be replaced dynamically per scene in video)
+    nf   = font(19)
+    narr = scene.get("narration", "")
+    nlines = wrap_text(draw, narr, nf, W - 80)
+    ny = CONTENT_BOT + 16
+    for nl in nlines[:2]:
+        draw.text((46, ny), nl, fill=LIGHT, font=nf)
+        ny += 26
+
+    # Powered by (right side of footer)
+    pf = font(14)
+    pl = "Powered by Blazly AI"
+    pw = draw.textbbox((0,0), pl, font=pf)[2]
+    draw.text((W - pw - 20, H - 24), pl, fill=MUTED, font=pf)
 
     img.save(f"outputs/slides/slide_{scene_no}.png")
     print(f"✅ slide_{scene_no}.png created")
